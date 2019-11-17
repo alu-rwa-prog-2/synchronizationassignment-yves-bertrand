@@ -1,0 +1,47 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <unistd.h>
+char tray[10];
+int *add(void *vargp) //adding the pizza
+{ 
+   int counter=0;
+   while(counter<10){
+         
+       if(tray[counter]=!'a'){
+              tray[counter]='a';
+              counter++;
+       }
+       else{
+           counter++;
+       }
+   
+   }
+} 
+int *rem(void *vargp)// removing the pizza
+{ 
+    int pizza;
+    printf("how many pizza are you removing");
+    scanf("%d", &pizza);
+   int counter=0;
+   while(counter<pizza){
+     
+       printf(tray[counter]);
+       if(tray[counter]=='a'){
+              tray[counter]='b';
+              counter++;
+              
+       }
+       else{
+           counter++;
+       }
+
+   }
+} 
+int main() 
+{ 
+    pthread_t thread_id; 
+    pthread_create(&thread_id, NULL, add, NULL); 
+    pthread_create(&thread_id, NULL, rem, NULL); 
+    pthread_join(thread_id, NULL); 
+    exit(0); 
+}
